@@ -1,4 +1,4 @@
-# Local Large language Model(LLM) or Offline LLM for Ruby on Rails
+# Local Large Language Model(LLM) or Offline LLM for Ruby on Rails
 
 **`local_llm`** is a lightweight Ruby gem that lets you talk to **locally installed LLMs via Ollama** — with **zero cloud dependency**, full **developer control**, and **configurable defaults**, including **real-time streaming support**.
 
