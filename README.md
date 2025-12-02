@@ -3,7 +3,7 @@
 **`local_llm`** is a lightweight Ruby gem that lets you talk to **locally installed LLMs via Ollama** — with **zero cloud dependency**, full **developer control**, and **configurable defaults**, including **real-time streaming support**.
 
 It supports:
-- Completely OFFLINE!
+- Completely **OFFLINE!**
 - Any Ollama model (LLaMA, Mistral, CodeLLaMA, Qwen, Phi, Gemma, etc.)
 - Developer-configurable default models
 - Developer-configurable Ollama API endpoint
@@ -13,10 +13,10 @@ It supports:
 - Also safe for HIPAA, SOC2, and regulated workflows where data privacy is a big concern
 
 ### Privacy & Security
- - 100% local inference
- - No cloud calls
- - No API keys
- - No data leaves your machine
+ - **100% local inference**
+ - **No cloud calls**
+ - **No API keys**
+ - **No data leaves your machine**
 
 ---
 
