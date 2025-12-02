@@ -1,35 +1,153 @@
-# LocalLlm
+# local_llm
 
-TODO: Delete this and the text below, and describe your gem
+**`local_llm`** is a lightweight Ruby gem that lets you talk to **locally installed LLMs via Ollama** — with **zero cloud dependency**, full **developer control**, and **configurable defaults**, including **real-time streaming support**.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/local_llm`. To experiment with that code, run `bin/console` for an interactive prompt.
+It supports:
+- Any Ollama model (LLaMA, Mistral, CodeLLaMA, Qwen, Phi, Gemma, etc.)
+- Developer-configurable default models
+- Developer-configurable Ollama API endpoint
+- Developer-configurable **streaming or non-streaming**
+- One-shot Q&A and multi-turn chat
+- Works in plain Ruby & Rails
+- 100% local & private
 
-## Installation
+---
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+## 🚀 Features
 
-Install the gem and add to the application's Gemfile by executing:
+- Use **any locally installed Ollama model**
+- Change **default models at runtime**
+- Enable or disable **real-time streaming**
+- Works with:
+  - `llama2`
+  - `mistral`
+  - `codellama`
+  - `qwen`
+  - `phi`
+  - Anything supported by Ollama
+- No API keys needed
+- No cloud calls
+- Full privacy
+- Works completely offline
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+---
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+## 📦 Installation
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+### Install Ollama
 
-## Usage
+Download from:
 
-TODO: Write usage instructions here
+https://ollama.com
 
-## Development
+Then start it:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```bash
+ollama serve
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### How to Install New LLMs
+```
+ollama pull llama2:13b
+ollama pull mistral:7b-instruct
+ollama pull codellama:13b-instruct
+ollama pull qwen2:7b
+```
 
-## Contributing
+### Verify Installed Models
+```
+ollama list
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/local_llm.
+### Configuration
+```
+LocalLlm.configure do |c|
+  c.base_url = "http://localhost:11434"
+  c.default_general_model = "llama2:13b"
+  c.default_fast_model    = "mistral:7b-instruct"
+  c.default_code_model    = "codellama:13b-instruct"
+  c.default_stream = false   # true = stream by default, false = return full text
+end
+```
 
-## License
+### Basic Usage (Non-Streaming)
+```
+LocalLlm.ask("llama2:13b", "What is HIPAA?")
+LocalLlm.ask("qwen2:7b", "Explain transformers in simple terms.")
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+LocalLlm.general("What is a Denial of Service attack?")
+LocalLlm.fast("Summarize this paragraph in 3 bullet points.")
+LocalLlm.code("Write a Ruby method that returns factorial of n.")
+```
+
+### Streaming Usage (Live Output)
+```
+LocalLlm.configure do |c|
+  c.default_stream = true
+end
+
+LocalLlm.fast("Explain HIPAA in very simple words.") do |chunk|
+  print chunk
+end
+```
+
+### Per-Call Streaming Override
+```
+LocalLlm.fast("Explain LLMs in one paragraph.", stream: true) do |chunk|
+  print chunk
+end
+
+full_text = LocalLlm.fast("Explain DoS attacks briefly.", stream: false)
+puts full_text
+```
+
+### Full Chat API (Multi-Turn)
+```
+LocalLlm.chat("llama2:13b", [
+  { "role" => "system", "content" => "You are a helpful assistant." },
+  { "role" => "user",   "content" => "Explain LSTM." }
+])
+```
+
+### List Installed Ollama Models from Ruby
+```
+LocalLlm.models
+```
+
+### Switching to Qwen (or Any New Model)
+```
+ollama pull qwen2:7b
+```
+
+```
+LocalLlm.ask("qwen2:7b", "Explain HIPAA in simple terms.")
+```
+
+### Make Qwen the Default
+```
+LocalLlm.configure do |c|
+  c.default_general_model = "qwen2:7b"
+end
+
+LocalLlm.general("Explain transformers.")
+```
+
+### 🔌 Remote Ollama / Docker Support
+```
+LocalLlm.configure do |c|
+  c.base_url = "http://192.168.1.100:11434"
+end
+```
+
+### Troubleshooting
+##### Ollama Not Running
+```
+ollama serve
+```
+
+### Privacy & Security
+ - 100% local inference
+ - No cloud calls
+ - No API keys
+ - No data leaves your machine
+ - Safe for HIPAA, SOC2, and regulated workflows
