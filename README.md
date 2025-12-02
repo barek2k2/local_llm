@@ -10,7 +10,13 @@ It supports:
 - Developer-configurable **streaming or non-streaming**
 - One-shot Q&A and multi-turn chat
 - Works in plain Ruby & Rails
-- 100% local & private
+- Also safe for HIPAA, SOC2, and regulated workflows where data privacy is a big concern
+
+### Privacy & Security
+ - 100% local inference
+ - No cloud calls
+ - No API keys
+ - No data leaves your machine
 
 ---
 
@@ -156,10 +162,3 @@ end
 ```
 ollama serve
 ```
-
-### Privacy & Security
- - 100% local inference
- - No cloud calls
- - No API keys
- - No data leaves your machine
- - Safe for HIPAA, SOC2, and regulated workflows where data privacy is a big concern
