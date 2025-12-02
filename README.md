@@ -81,6 +81,17 @@ LocalLlm.fast("Summarize this paragraph in 3 bullet points.")
 LocalLlm.code("Write a Ruby method that returns factorial of n.")
 ```
 
+### Constant Alias (LocalLlm vs LocalLLM)
+
+For convenience and readability, `LocalLLM` is provided as a direct alias of `LocalLlm`.
+
+This means **both constants work identically**:
+
+```
+LocalLlm.fast("Tell me About Bangladesh")
+LocalLLM.fast("Explain HIPAA in simple terms.") # alias of LocalLlm
+```
+
 ### Streaming Usage (Live Output)
 ```
 LocalLlm.configure do |c|
@@ -151,4 +162,4 @@ ollama serve
  - No cloud calls
  - No API keys
  - No data leaves your machine
- - Safe for HIPAA, SOC2, and regulated workflows
+ - Safe for HIPAA, SOC2, and regulated workflows where data privacy is a big concern
