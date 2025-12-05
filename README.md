@@ -168,4 +168,26 @@ end
 
 After successfully starting this, it would run on port 11434 intom your machine. make sure it pulls installed LLM by running `ollama list`
 
+### How to use it in Ruby On Rails
+ - Create an initializer at `config/initializers/local_llm.rb`
+ - Put the following code into it
+ ```
+ LocalLlm.configure do |c|
+  # Default Ollama endpoint
+  c.base_url = "http://localhost:11434"
 
+  # Choose your default models (must be installed in Ollama)
+  c.default_general_model = "qwen2:7b"
+  c.default_fast_model    = "mistral:7b-instruct"
+  c.default_code_model    = "codellama:13b-instruct"
+  c.default_stream = true # stream support by default
+end
+
+ ```
+ - Then from your any controller or model, run this
+ ```
+ question = "What is Ruby?"
+ LocalLlm.fast(question) do |chunk|
+   print chunk
+ end
+```
