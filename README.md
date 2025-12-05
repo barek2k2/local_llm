@@ -158,7 +158,12 @@ end
 ```
 
 ### Troubleshooting
-##### Ollama Not Running
-```
-ollama serve
-```
+`Connection refused - connect(2) for "localhost" port 11434 (Errno::ECONNREFUSED)`
+
+This means ollama is not installed and not running in your machine. Basic steps to install it in Mac
+`brew install ollama`
+`brew services start ollama`
+
+After successfully starting this, it would run on port 11434 intom your machine. make sure it pulls installed LLM by running `ollama list`
+
+
