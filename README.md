@@ -169,6 +169,9 @@ end
 After successfully starting this, it would run on port 11434 intom your machine. make sure it pulls installed LLM by running `ollama list`
 
 ### How to use it in Ruby On Rails
+ - In your Gemfile, add the gem as 
+  `gem "local_llm", "~> 0.1.1"`
+ - Run `bundle install`
  - Create an initializer at `config/initializers/local_llm.rb`
  - Put the following code into it
  ```
