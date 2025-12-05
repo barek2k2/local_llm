@@ -53,6 +53,8 @@ Then start it:
 ollama serve
 ```
 
+Or simply install it by running `brew install ollama` command in your mac machine.
+
 ### How to Install New LLMs
 ```
 ollama pull llama2:13b
@@ -160,7 +162,7 @@ end
 ### Troubleshooting
 `Connection refused - connect(2) for "localhost" port 11434 (Errno::ECONNREFUSED)`
 
-This means ollama is not installed and not running in your machine. Basic steps to install it in Mac
+##### This means ollama is not installed or not running in your machine. So run the following commands below
  - `brew install ollama`
  - `brew services start ollama`
 
