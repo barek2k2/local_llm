@@ -1,6 +1,6 @@
 # Local Large Language Model(LLM) or Offline LLM for Ruby on Rails
 
-**`local_llm`** is a lightweight Ruby gem that lets you talk to **locally installed LLMs via Ollama** — with **zero cloud dependency**, full **developer control**, and **configurable defaults**, including **real-time streaming support**.
+**`local_llm`** is a lightweight Ruby gem that lets you talk to **locally installed LLMs via Ollama** — with **zero cloud dependency**, full **developer control**, and **configurable defaults**, including **real-time streaming support**. Instead of sending sensitive data to cloud APIs, this gem allows you to interact with powerful AI models directly from your local machine or server. It is built for privacy, control, and simplicity, making it ideal for developers who want fast AI features without internet dependency, usage limits, or data exposure. LocalLLM works seamlessly with both plain Ruby and Ruby on Rails applications.
 
 It supports:
 - Completely **OFFLINE!**
