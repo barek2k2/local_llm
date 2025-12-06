@@ -129,11 +129,26 @@ puts full_text
 
 ### Full Chat API (Multi-Turn)
 ```
-LocalLlm.chat("llama2:13b", [
+LocalLlm.chat("qwen2:7b", [
   { "role" => "system", "content" => "You are a helpful assistant." },
-  { "role" => "user",   "content" => "Explain LSTM." }
+  {"role" => "user", "content" => "Explain Ruby shortly in one sentence"},
+  { "role" => "assistant",   "content" => "Ruby is an open-source, dynamic, object-oriented programming language that emphasizes simplicity and readability, making it popular for web development with the Rails framework" },
+  { "role" => "user",   "content" => "Tell me the year in number when it was created?" }
 ])
 ```
+`"Ruby was created in the year 1995."`
+
+```
+LocalLlm.chat("qwen2:7b", [
+  { "role" => "system", "content" => "You are a helpful assistant." },
+  {"role" => "user", "content" => "Explain Ruby shortly in one sentence"},
+  { "role" => "assistant",   "content" => "Ruby is an open-source, dynamic, object-oriented programming language that emphasizes simplicity and readability, making it popular for web development with the Rails framework" },
+  { "role" => "user",   "content" => "Tell me the year in number when it was created?" },
+  { "role" => "assistant",   "content" => "Ruby was created in the year 1995." },
+  {"role" => "user", "content" => "Thanks so much!"}
+])
+```
+`"You're welcome! If you have any other questions, feel free to ask. Happy coding!"`
 
 ### List Installed Ollama Models from Ruby
 ```
