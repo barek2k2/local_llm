@@ -127,6 +127,21 @@ full_text = LocalLlm.fast("Explain DoS attacks briefly.", stream: false)
 puts full_text
 ```
 
+
+### List Installed Ollama Models from Ruby
+```
+LocalLlm.models
+```
+
+### Switching to Qwen (or Any New Model)
+```
+ollama pull qwen2:7b
+```
+
+```
+LocalLlm.ask("qwen2:7b", "Explain HIPAA in simple terms.")
+```
+
 ### Full Chat API (Multi-Turn)
 ```
 LocalLlm.chat("qwen2:7b", [
@@ -144,7 +159,7 @@ LocalLlm.chat("qwen2:7b", [
   { "role" => "user",   "content" => "Tell me the year in number when it was created?" }
 ])
 ```
-`"Ruby was created in the year 1995."`
+`Ruby was created in the year 1995.`
 
 ```
 LocalLlm.chat("qwen2:7b", [
@@ -156,21 +171,8 @@ LocalLlm.chat("qwen2:7b", [
   {"role" => "user", "content" => "Thanks so much!"}
 ])
 ```
-`"You're welcome! If you have any other questions, feel free to ask. Happy coding!"`
+`You're welcome! If you have any other questions, feel free to ask. Happy coding!`
 
-### List Installed Ollama Models from Ruby
-```
-LocalLlm.models
-```
-
-### Switching to Qwen (or Any New Model)
-```
-ollama pull qwen2:7b
-```
-
-```
-LocalLlm.ask("qwen2:7b", "Explain HIPAA in simple terms.")
-```
 
 ### Make Qwen the Default
 ```
