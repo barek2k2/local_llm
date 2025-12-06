@@ -132,6 +132,14 @@ puts full_text
 LocalLlm.chat("qwen2:7b", [
   { "role" => "system", "content" => "You are a helpful assistant." },
   {"role" => "user", "content" => "Explain Ruby shortly in one sentence"},
+])
+```
+`Ruby is a dynamic, open-source programming language known for its simplicity and readability, designed for building web applications with the Ruby on Rails framework.`
+
+```
+LocalLlm.chat("qwen2:7b", [
+  { "role" => "system", "content" => "You are a helpful assistant." },
+  {"role" => "user", "content" => "Explain Ruby shortly in one sentence"},
   { "role" => "assistant",   "content" => "Ruby is an open-source, dynamic, object-oriented programming language that emphasizes simplicity and readability, making it popular for web development with the Rails framework" },
   { "role" => "user",   "content" => "Tell me the year in number when it was created?" }
 ])
